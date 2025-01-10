@@ -100,7 +100,7 @@ const HeroSection = ({ nav, handleNav }) => {
           <span>Mr. Siddharth Dadaram Bankar</span>
         </p>
         <p className="hero-desc">
-          I'm a <span className="hero-desc-sub">Full Stack Developer.</span>
+          I'm a <span className="hero-desc-sub">Full Stack Web Developer.</span>
         </p>
       </motion.div>
       <motion.span

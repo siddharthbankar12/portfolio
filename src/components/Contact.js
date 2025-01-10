@@ -41,7 +41,7 @@ const Contact = () => {
             >
               <div className="contact-heading ">
                 <p>
-                  I’m excited about opportunities involving full-stack
+                  I’m excited about opportunities involving full-stack web
                   development, including both front-end and back-end work.
                   Whether it's a freelance project, software development, or
                   testing, I’m open to collaborating on dynamic and impactful
