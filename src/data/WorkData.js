@@ -42,7 +42,7 @@ export const CertificationsData = [
     name: "Foundations of UX Design",
     company: "Google",
     app: "https://coursera.org/verify/LDSWWS8GYTV4",
-    tech: ["SQL"],
+    tech: ["User Experience (UX), Prototype, Wireframe, UX Research"],
   },
   {
     name: "Learning Java 11",
