@@ -16,17 +16,17 @@ export const ProjectsData = [
     app: "https://siddharthbankar12.github.io/TextUtils_ReactProject/",
   },
   {
-    title: "E-Commerce Project",
-    desc: "Developed a comprehensive e-commerce platform for computer and laptop products with features such as detailed product listings, advanced search and filtering, secure user authentication, and streamlined checkout. Includes admin tools for product and inventory management.",
-    tech: ["HTML5", "CSS3", "React.js", "Node.js", "Express.js", "MongoDB"],
-    gitlink: "//github.com/siddharthbankar12/E-Commerce_Project",
-    app: "",
-  },
-  {
     title: "CurrentSpotLight ReactProject",
     desc: "This project is a real-time news application designed to display the latest headlines and articles from various news sources. It pulls data from the News API and displays it in an organized, user-friendly format.",
     tech: ["HTML", "CSS", "React.js", "JavaScript"],
     gitlink: "//github.com/siddharthbankar12/CurrentSpotLight_News_React",
+    app: "",
+  },
+  {
+    title: "E-Commerce Project",
+    desc: "Developed a comprehensive e-commerce platform for computer and laptop products with features such as detailed product listings, advanced search and filtering, secure user authentication, and streamlined checkout. Includes admin tools for product and inventory management.",
+    tech: ["HTML5", "CSS3", "React.js", "Node.js", "Express.js", "MongoDB"],
+    gitlink: "//github.com/siddharthbankar12/E-Commerce_Project",
     app: "",
   },
 ];
@@ -38,41 +38,32 @@ export const CertificationsData = [
     app: "https://www.udemy.com/certificate/UC-36098b41-c3a4-4d96-aefc-4eea6a236999/",
     tech: ["HTML & CSS"],
   },
+
   {
-    name: "Foundations of UX Design",
-    company: "Google",
-    app: "https://coursera.org/verify/LDSWWS8GYTV4",
-    tech: ["User Experience (UX), Prototype, Wireframe, UX Research"],
+    name: "JavaScript Foundations Professional Certificate by Mozilla",
+    company: "Mozilla & Linkedin Learning",
+    app: "https://www.linkedin.com/learning/certificates/30c42fe8360d61f61aa930a612681c09f65408d257d0e07ccd3682f50407603c?u=157124841",
+    tech: ["Javascript & Web Development"],
   },
-  {
-    name: "Learning Java 11",
-    company: "Linkedin Learning",
-    app: "https://www.linkedin.com/learning/certificates/58776aab12703bd451a77a5306c2ce1b11b6a5e056013354c9458f472b3a00cb?trk=share_certificate",
-    tech: ["Java"],
-  },
-  {
-    name: "Learning SQL Programming",
-    company: "Linkedin Learning",
-    app: "https://www.linkedin.com/learning/certificates/e2800ce958210b2136f2fb927e818bd256634d72ceb09818906edc9776ea1547?u=157124841",
-    tech: ["SQL"],
-  },
+
   {
     name: "MongoDB Essential Training",
     company: "Linkedin Learning",
     app: "https://www.linkedin.com/learning/certificates/38a7a0ebd3565c0ba54767a78b596a61f731c5105d07b1c165f552986d54055e?trk=share_certificate",
     tech: ["MongoDB"],
   },
+
   {
-    name: "Excel Essential Training (Microsoft 365)",
+    name: "Learning SQL Programming",
     company: "Linkedin Learning",
-    app: "https://www.linkedin.com/learning/certificates/94cad2ca29362a21cfcab16fb29497535d55d35e4a9d37dfa0c71ea25f2b5159?trk=share_certificate",
-    tech: ["Excel"],
+    app: "https://www.linkedin.com/learning/certificates/e2800ce958210b2136f2fb927e818bd256634d72ceb09818906edc9776ea1547?u=157124841",
+    tech: ["SQL"],
   },
 
   {
-    name: "Power BI Essential Training",
+    name: "Learning Java 11",
     company: "Linkedin Learning",
-    app: "https://www.linkedin.com/learning/certificates/933f8540fe466bef76d6bea4c0a7f1982a8f9b419edad9301bca9d2e8b1ae21c?trk=share_certificate",
-    tech: ["PowerBI"],
+    app: "https://www.linkedin.com/learning/certificates/58776aab12703bd451a77a5306c2ce1b11b6a5e056013354c9458f472b3a00cb?u=157124841",
+    tech: ["Java"],
   },
 ];
