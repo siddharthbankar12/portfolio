@@ -23,7 +23,9 @@ const Services = () => {
             className="heading"
           >
             <p className="heading-sub-text">What I can do</p>
-            <p className="heading-text"><strong>Services</strong></p>
+            <p className="heading-text">
+              <strong>Services</strong>
+            </p>
           </motion.div>
           <motion.div
             className="services-box"
@@ -48,7 +50,7 @@ const Services = () => {
             </div>
             <div className="services-card">
               <IoColorWandOutline className="services-icon" />
-              <p className="services-title">UI/UX Design & Improvement</p>
+              <p className="services-title">Web Design & Improvement</p>
               <p className="services-desc">
                 I create user-friendly and visually appealing designs to improve
                 your website or app's usability and look.
