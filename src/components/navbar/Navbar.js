@@ -4,7 +4,7 @@ import { FaHome, FaLaptop } from "react-icons/fa";
 import { BiBookContent, BiServer, BiEnvelope } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
 import { Link } from "react-scroll";
-import ProfileImg from "../../images/profile_me.jpg";
+import ProfileImg from "../../images/1.jpg";
 import NavLinks from "./NavLinks";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
@@ -30,7 +30,7 @@ const navVariants = {
 
 const Navbar = ({ nav, handleNav }) => {
   const handleLinkClick = () => {
-    handleNav(false); 
+    handleNav(false);
   };
 
   return (

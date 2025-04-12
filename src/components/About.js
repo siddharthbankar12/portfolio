@@ -36,7 +36,7 @@ const About = () => {
                   <big>
                     <strong>Hello! I’m Siddharth Dadaram Bankar</strong>
                   </big>
-                  , a passionate web developer with a Master’s degree in
+                  , a passionate MERN Stack developer with a Master’s degree in
                   Computer Applications. I specialize in creating responsive and
                   interactive web applications using technologies like HTML,
                   CSS, JavaScript, React, and MongoDB.

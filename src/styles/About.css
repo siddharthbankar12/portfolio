@@ -34,9 +34,9 @@
 
 .about-img img {
   width: 100%;
-  max-width: 300px; /* Ensures the image won't exceed 300px width */
+  max-width: 200px; /* Ensures the image won't exceed 300px width */
   height: auto; /* Keeps the aspect ratio */
-  border-radius: 5px;
+  border-radius: 10px;
   filter: brightness(100%);
   cursor: pointer;
   transition: all 0.4s ease;
@@ -68,6 +68,7 @@
     width: 100%; /* Image takes full width of the container */
     max-height: 250px; /* Limits the height for small screens */
     object-fit: contain; /* Ensures the entire image is visible */
+    border-radius: 10px;
   }
 
   .heading-sub-text {

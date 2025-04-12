@@ -1,9 +1,17 @@
 export const ExperienceData = [
   {
+    role: "Web Developer Intern",
+    company: "Basil Infotech Limited",
+    desc: "Worked under the guidance of senior developers to support the development of web applications. Gained hands-on experience in writing clean and maintainable code, fixing bugs, and building responsive user interfaces. Learned about web development best practices and contributed to real-world projects.",
+    tech: ["HTML", "CSS", "JavaScript", "React.js"],
+    period: "April 2025 - Present",
+  },
+  {
     role: "Frontend Intern",
     company: "Sharadchandra Techventure Pvt. Ltd.",
     desc: "Assisting in the development and maintenance of responsive and user-friendly web applications. Collaborating with design and backend teams to implement and improve user interfaces.",
     tech: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "React.js"],
+    period: "Feb 2024 - Jul 2024",
   },
 ];
 

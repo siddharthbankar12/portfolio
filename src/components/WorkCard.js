@@ -10,11 +10,11 @@ const WorkCard = ({ w, tabId }) => {
           <div className="works-container">
             <div className="top-work">
               <FiFolder className="work-folder" />
+              <h4>{w.period}</h4>
             </div>
             <div className="mid-work">
-              <p className="work-title">
-                {w.role} <br /> {w.company}
-              </p>
+              <p className="work-title">{w.role}</p>
+              <p className="work-company">{w.company}</p>
               <p className="work-desc">{w.desc}</p>
             </div>
             <div className="bottom-work">
