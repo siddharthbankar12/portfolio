@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.55240718.css",
-    "main.js": "/portfolio/static/js/main.ca181d46.js",
+    "main.css": "/portfolio/static/css/main.14385084.css",
+    "main.js": "/portfolio/static/js/main.e867a8c4.js",
     "static/media/profile_me.jpg": "/portfolio/static/media/profile_me.cf3e126f059882d23168.jpg",
     "static/media/1.jpg": "/portfolio/static/media/1.4e79550e6a5ebae47e2c.jpg",
     "static/media/hero-bg-1.jpg": "/portfolio/static/media/hero-bg-1.5a3233c0bcb06a691fe2.jpg",
-    "static/media/Siddharth_Bankar.pdf": "/portfolio/static/media/Siddharth_Bankar.86912cfe13d0b7e8360f.pdf",
+    "static/media/Siddharth_Bankar.pdf": "/portfolio/static/media/Siddharth_Bankar.e8d2882fe8a84ce9e25a.pdf",
     "index.html": "/portfolio/index.html",
-    "main.55240718.css.map": "/portfolio/static/css/main.55240718.css.map",
-    "main.ca181d46.js.map": "/portfolio/static/js/main.ca181d46.js.map"
+    "main.14385084.css.map": "/portfolio/static/css/main.14385084.css.map",
+    "main.e867a8c4.js.map": "/portfolio/static/js/main.e867a8c4.js.map"
   },
   "entrypoints": [
-    "static/css/main.55240718.css",
-    "static/js/main.ca181d46.js"
+    "static/css/main.14385084.css",
+    "static/js/main.e867a8c4.js"
   ]
 }
