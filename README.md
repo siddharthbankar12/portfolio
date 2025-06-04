@@ -52,6 +52,12 @@ Now, you can navigate to http://localhost:3000/ to view the app.
 npm run build
 ```
 
+### Deployment
+
+```bash
+npm run deploy
+```
+
 ## Credits ✍
 
 Implementation by [@siddharthbankar12](https://github.com/siddharthbankar12)
