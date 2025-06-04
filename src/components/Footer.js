@@ -12,8 +12,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer-container">
         <p className="footer-text">
-          &copy; {new Date().getFullYear()} Siddharth Bankar. All Rights
-          Reserved.
+          Copyright © 2025 Siddharth Bankar. All rights reserved.
         </p>
         <div className="footer-links">
           {/* LinkedIn */}

@@ -1,6 +1,6 @@
 import React from "react";
 import { FiFolder, FiGithub } from "react-icons/fi";
-import { IoOpenOutline } from "react-icons/io5";
+import { FaLink } from "react-icons/fa6";
 
 const WorkCard = ({ w, tabId }) => {
   return (
@@ -47,7 +47,7 @@ const WorkCard = ({ w, tabId }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <IoOpenOutline />
+                    <FaLink />
                   </a>
                 )}
               </div>
@@ -75,7 +75,7 @@ const WorkCard = ({ w, tabId }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <IoOpenOutline />
+                  <FaLink />
                 </a>
               </div>
             </div>

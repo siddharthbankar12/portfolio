@@ -1,6 +1,12 @@
 import { DiJavascript1 } from "react-icons/di";
 import { FaGithub, FaHtml5, FaReact, FaNodeJs } from "react-icons/fa";
-import { SiRedux, SiTailwindcss, SiMongodb, SiExpress } from "react-icons/si";
+import {
+  SiRedux,
+  SiTailwindcss,
+  SiMongodb,
+  SiExpress,
+  SiSocketdotio,
+} from "react-icons/si";
 
 export const SkillsData = [
   {
@@ -12,12 +18,16 @@ export const SkillsData = [
     icon: <FaNodeJs />,
   },
   {
-    name: "Express",
+    name: "Express.js",
     icon: <SiExpress />,
   },
   {
     name: "MongoDB",
     icon: <SiMongodb />,
+  },
+  {
+    name: "Socket.IO",
+    icon: <SiSocketdotio />,
   },
   {
     name: "Redux",
@@ -37,7 +47,7 @@ export const SkillsData = [
   },
 
   {
-    name: "Git",
+    name: "GitHub",
     icon: <FaGithub />,
   },
 ];

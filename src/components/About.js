@@ -39,7 +39,7 @@ const About = () => {
                   , a passionate MERN Stack developer with a Master’s degree in
                   Computer Applications. I specialize in creating responsive and
                   interactive web applications using technologies like HTML,
-                  CSS, JavaScript, React, and MongoDB.
+                  CSS, JavaScript, React, MongoDB, Express and Node.
                 </p>
                 <br />
                 <p>
