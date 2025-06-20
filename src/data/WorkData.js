@@ -6,13 +6,6 @@ export const ExperienceData = [
     tech: ["HTML", "CSS", "JavaScript", "React.js"],
     period: "April 2025 - Present",
   },
-  {
-    role: "Frontend Web Developer Intern",
-    company: "Sharadchandra Techventure Pvt. Ltd.",
-    desc: "Assisting in the development and maintenance of responsive and user-friendly web applications. Collaborating with design and backend teams to implement and improve user interfaces.",
-    tech: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "React.js"],
-    period: "Dec 2024 - Mar 2025",
-  },
 ];
 
 export const ProjectsData = [
