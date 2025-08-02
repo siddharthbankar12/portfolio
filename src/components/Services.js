@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/Services.css";
-import { IoColorWandOutline } from "react-icons/io5";
-import { BiCodeAlt } from "react-icons/bi";
+import { FaLaptopCode, FaTools, FaPaintBrush } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 const Services = () => {
@@ -33,23 +32,26 @@ const Services = () => {
             initial={{ opacity: 0 }}
           >
             <div className="services-card">
-              <BiCodeAlt className="services-icon" />
-              <p className="services-title">Web Application Development </p>
+              <FaLaptopCode className="services-icon" />
+              <p className="services-title">Web Application Development</p>
               <p className="services-desc">
                 I develop fast, secure, and scalable web applications tailored
                 to your needs using modern technologies like React and MongoDB.
               </p>
             </div>
+
             <div className="services-card">
-              <BiCodeAlt className="services-icon" />
-              <p className="services-title">Frontend Development</p>
+              <FaTools className="services-icon" />
+              <p className="services-title">Software Maintenance</p>
               <p className="services-desc">
-                I build responsive, interactive websites using HTML, CSS,
-                JavaScript, and React for a seamless user experience.
+                I provide long-term support, updates, debugging, and performance
+                enhancements to ensure your applications run smoothly and
+                securely.
               </p>
             </div>
+
             <div className="services-card">
-              <IoColorWandOutline className="services-icon" />
+              <FaPaintBrush className="services-icon" />
               <p className="services-title">Web Design & Improvement</p>
               <p className="services-desc">
                 I create user-friendly and visually appealing designs to improve

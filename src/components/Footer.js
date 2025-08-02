@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  FaLinkedin,
-  FaEnvelope,
-  FaWhatsapp,
-  FaInstagram,
-} from "react-icons/fa";
+import { FaLinkedin, FaEnvelope, FaGithub } from "react-icons/fa";
 import "../styles/Footer.css";
 
 const Footer = () => {
@@ -33,23 +28,14 @@ const Footer = () => {
             <FaEnvelope className="footer-icon" />
           </a>
 
-          {/* Instagram */}
+          {/* GitHub */}
           <a
-            href="https://www.instagram.com/_s_i_ddharth__"
+            href="https://github.com/siddharthbankar12"
             target="_blank"
             rel="noopener noreferrer"
             className="footer-link"
           >
-            <FaInstagram className="footer-icon" />
-          </a>
-          {/* WhatsApp */}
-          <a
-            href="https://wa.me/+919011908472"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="footer-link"
-          >
-            <FaWhatsapp className="footer-icon" />
+            <FaGithub className="footer-icon" />
           </a>
         </div>
       </div>

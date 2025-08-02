@@ -1,4 +1,4 @@
-import { DiJavascript1 } from "react-icons/di";
+import { DiJavascript1, DiMysql } from "react-icons/di";
 import { FaGithub, FaHtml5, FaReact, FaNodeJs } from "react-icons/fa";
 import {
   SiRedux,
@@ -6,12 +6,17 @@ import {
   SiMongodb,
   SiExpress,
   SiSocketdotio,
+  SiBootstrap,
+  SiPhp,
+  SiReact,
+  SiMysql,
+  SiCodeigniter,
 } from "react-icons/si";
 
 export const SkillsData = [
   {
     name: "React JS",
-    icon: <FaReact />,
+    icon: <SiReact />,
   },
   {
     name: "Node.js",
@@ -26,6 +31,10 @@ export const SkillsData = [
     icon: <SiMongodb />,
   },
   {
+    name: "MySQL",
+    icon: <SiMysql />,
+  },
+  {
     name: "Socket.IO",
     icon: <SiSocketdotio />,
   },
@@ -38,12 +47,24 @@ export const SkillsData = [
     icon: <DiJavascript1 />,
   },
   {
+    name: "PHP",
+    icon: <SiPhp />,
+  },
+  {
+    name: "CodeIgniter",
+    icon: <SiCodeigniter />,
+  },
+  {
     name: "HTML5",
     icon: <FaHtml5 />,
   },
   {
     name: "Tailwind CSS",
     icon: <SiTailwindcss />,
+  },
+  {
+    name: "Bootstrap",
+    icon: <SiBootstrap />,
   },
 
   {

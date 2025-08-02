@@ -1,10 +1,17 @@
 export const ExperienceData = [
   {
+    role: "Software Development Intern",
+    company: "Mindstack Software Pvt. Ltd.",
+    desc: "Designed, developed, and tested software applications. Actively participated in code reviews to ensure code quality and maintainability. Contributed to the development of new features and functionality enhancements. Collaborated with the team to deliver high-quality, scalable solutions.",
+    tech: ["HTML", "CSS", "JavaScript", "React.js"],
+    period: "June 2025 - July 2025",
+  },
+  {
     role: "Junior Web Developer Intern",
     company: "Basil Infotech Limited",
-    desc: "Worked under the guidance of senior developers to support the development of web applications. Gained hands-on experience in writing clean and maintainable code, fixing bugs, and building responsive user interfaces. Learned about web development best practices and contributed to real-world projects.",
-    tech: ["HTML", "CSS", "JavaScript", "React.js"],
-    period: "April 2025 - Present",
+    desc: "Worked under the guidance of senior developers to support the development of web applications. Gained hands-on experience in writing clean and maintainable code, fixing bugs, and building responsive user interfaces.",
+    tech: ["React JS", "Node.js", "Express.js", "MongoDB"],
+    period: "April 2025 - June 2025",
   },
 ];
 
@@ -43,7 +50,7 @@ export const ProjectsData = [
 
 export const CertificationsData = [
   {
-    name: "MERN Stack Developer",
+    name: "Full Stack Developer",
     company: "Awdiz Institute",
     app: "https://www.linkedin.com/in/siddharth-bankar-561a50236/overlay/1748277772341/single-media-viewer/?profileId=ACoAADrjMBkBAwmgijJ96qT_bP0xlyuSvEyeEWk",
     tech: ["MERN Stack ( React JS, Node.js, Express.js, MongoDB )"],
@@ -65,5 +72,17 @@ export const CertificationsData = [
     company: "Linkedin Learning",
     app: "https://www.linkedin.com/learning/certificates/38a7a0ebd3565c0ba54767a78b596a61f731c5105d07b1c165f552986d54055e?trk=share_certificate",
     tech: ["MongoDB"],
+  },
+  {
+    name: "Learning SQL Programming",
+    company: "Linkedin Learning",
+    app: "https://www.linkedin.com/learning/certificates/e5550839a533597859236c47dbebf0ed10a8722f37f822f3c8c5d88475d29929?trk=share_certificate",
+    tech: ["SQL"],
+  },
+  {
+    name: "Learning Java 11",
+    company: "Linkedin Learning",
+    app: "https://www.linkedin.com/learning/certificates/58776aab12703bd451a77a5306c2ce1b11b6a5e056013354c9458f472b3a00cb?trk=share_certificate",
+    tech: ["Java"],
   },
 ];

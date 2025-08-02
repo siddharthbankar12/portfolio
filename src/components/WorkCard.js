@@ -17,11 +17,6 @@ const WorkCard = ({ w, tabId }) => {
               <p className="work-company">{w.company}</p>
               <p className="work-desc">{w.desc}</p>
             </div>
-            <div className="bottom-work">
-              {w.tech.map((e, index) => (
-                <small key={index}>{e}</small>
-              ))}
-            </div>
           </div>
         </div>
       ) : tabId === "projects" ? (

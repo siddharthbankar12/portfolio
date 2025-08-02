@@ -35,16 +35,6 @@ const NavLinks = ({ handleNav }) => {
           <BsGithub />
         </Link>
       </li>
-      <li onClick={handleNav}>
-        <a
-          href="https://wa.me/+919011908472"
-          target="_blank"
-          className="nav-link"
-          rel="noreferrer"
-        >
-          <FaWhatsapp />
-        </a>
-      </li>
     </ul>
   );
 };
