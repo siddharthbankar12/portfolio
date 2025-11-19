@@ -33,6 +33,7 @@ const Contact = () => {
               <strong>Get in Touch</strong>
             </p>
           </motion.div>
+
           <div className="contact-box">
             <motion.div
               className="left-box"
@@ -41,14 +42,16 @@ const Contact = () => {
             >
               <div className="contact-heading ">
                 <p>
-                  I’m excited about opportunities involving full-stack web
-                  development, including both front-end and back-end work.
-                  Whether it's a freelance project, software development, or
-                  testing, I’m open to collaborating on dynamic and impactful
-                  solutions. Feel free to reach out through the form for any
-                  requests or questions!
+                  I’m open to opportunities in software development, including
+                  web applications, mobile app development, backend engineering,
+                  and cloud-based solutions. Whether you need a developer to
+                  build scalable systems, create intuitive user interfaces, or
+                  collaborate on impactful projects — I’d be happy to connect.
+                  Feel free to reach out through the contact form for inquiries,
+                  collaborations, or project discussions!
                 </p>
               </div>
+
               <div className="contact-hello">
                 <p>Say Hello</p>
                 <a
@@ -69,6 +72,7 @@ const Contact = () => {
                 </a>
               </div>
             </motion.div>
+
             <motion.div
               className="right-box"
               initial={{ opacity: 0, y: "50px" }}
@@ -117,7 +121,7 @@ const Contact = () => {
                       type="text"
                       name="message"
                       id="message"
-                      placeholder="Hi, I think I need you to work on this particular product. Reach out as soon as you can"
+                      placeholder="Hi, I would like to discuss a project or opportunity with you."
                       required
                     ></textarea>
                   </div>

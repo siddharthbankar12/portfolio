@@ -1,5 +1,19 @@
 export const ExperienceData = [
   {
+    role: "Software Engineer Trainee",
+    company: "Mindstack Software Pvt. Ltd.",
+    desc: "Working on web, application and backend development as part of the engineering team. Contributing to real-world projects, implementing new features, improving system performance, and learning industry-level software development practices.",
+    tech: [
+      "React.js",
+      "React Native",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "MySQL",
+    ],
+    period: "August 2025 - Present",
+  },
+  {
     role: "Software Development Intern",
     company: "Mindstack Software Pvt. Ltd.",
     desc: "Designed, developed, and tested software applications. Actively participated in code reviews to ensure code quality and maintainability. Contributed to the development of new features and functionality enhancements. Collaborated with the team to deliver high-quality, scalable solutions.",

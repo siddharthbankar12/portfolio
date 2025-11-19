@@ -1,4 +1,4 @@
-import { DiJavascript1, DiMysql } from "react-icons/di";
+import { DiJavascript1 } from "react-icons/di";
 import { FaGithub, FaHtml5, FaReact, FaNodeJs } from "react-icons/fa";
 import {
   SiRedux,
@@ -8,15 +8,23 @@ import {
   SiSocketdotio,
   SiBootstrap,
   SiPhp,
-  SiReact,
   SiMysql,
   SiCodeigniter,
+  SiTypescript,
+  SiFastify,
+  SiPostgresql,
+  SiAwslambda,
+  SiAmazons3,
 } from "react-icons/si";
 
 export const SkillsData = [
   {
     name: "React JS",
-    icon: <SiReact />,
+    icon: <FaReact />,
+  },
+  {
+    name: "React Native",
+    icon: <FaReact />,
   },
   {
     name: "Node.js",
@@ -27,12 +35,20 @@ export const SkillsData = [
     icon: <SiExpress />,
   },
   {
+    name: "Fastify",
+    icon: <SiFastify />,
+  },
+  {
     name: "MongoDB",
     icon: <SiMongodb />,
   },
   {
     name: "MySQL",
     icon: <SiMysql />,
+  },
+  {
+    name: "PostgreSQL",
+    icon: <SiPostgresql />,
   },
   {
     name: "Socket.IO",
@@ -45,6 +61,10 @@ export const SkillsData = [
   {
     name: "JavaScript",
     icon: <DiJavascript1 />,
+  },
+  {
+    name: "TypeScript",
+    icon: <SiTypescript />,
   },
   {
     name: "PHP",
@@ -66,7 +86,14 @@ export const SkillsData = [
     name: "Bootstrap",
     icon: <SiBootstrap />,
   },
-
+  {
+    name: "AWS Lambda",
+    icon: <SiAwslambda />,
+  },
+  {
+    name: "AWS S3",
+    icon: <SiAmazons3 />,
+  },
   {
     name: "GitHub",
     icon: <FaGithub />,

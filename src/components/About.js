@@ -36,23 +36,26 @@ const About = () => {
                   <big>
                     <strong>Hello! I’m Siddharth Dadaram Bankar</strong>
                   </big>
-                  , a dedicated and passionate Full Stack Developer with a
-                  Master’s degree in Computer Applications and a Bachelor’s in
-                  Computer Science.
+                  , a passionate Software Engineer specializing in modern web
+                  development, mobile application development, and scalable
+                  software solutions. I hold an MCA and a B.Sc. in Computer
+                  Science, with a strong foundation in full-stack engineering.
                 </p>
                 <br />
                 <p>
-                  I’m deeply committed to building meaningful web experiences
-                  that blend creativity with functionality. I take pride in
-                  writing clean, maintainable code and turning ideas into
-                  intuitive digital products.
+                  I build clean, efficient, and user-centric digital
+                  products—whether it's a responsive website, a high-performance
+                  mobile app, or a robust backend system. I enjoy solving
+                  real-world problems through technology and turning ideas into
+                  smooth, functional experiences.
                 </p>
                 <br />
                 <p>
-                  I'm always eager to learn, grow, and take on challenges that
-                  push my boundaries. My goal is to contribute to impactful
-                  projects and collaborate with teams that value innovation,
-                  quality, and continuous improvement.
+                  I’m constantly learning and pushing my boundaries to stay
+                  aligned with the latest industry trends. My goal is to
+                  contribute to impactful projects and collaborate with teams
+                  that value innovation, quality engineering, and continuous
+                  growth.
                 </p>
               </section>
             </motion.div>
