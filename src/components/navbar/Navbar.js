@@ -33,6 +33,15 @@ const Navbar = ({ nav, handleNav }) => {
     handleNav(false);
   };
 
+  // Add body class when navbar is open to prevent scroll
+  React.useEffect(() => {
+    if (nav) {
+      document.body.classList.add("navbar-open");
+    } else {
+      document.body.classList.remove("navbar-open");
+    }
+  }, [nav]);
+
   return (
     <AnimatePresence>
       <motion.nav

@@ -25,9 +25,20 @@
   background: var(--nav-blue-shade);
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   overflow-x: hidden;
   background: var(--section-bgd);
+  touch-action: pan-y;
+}
+
+/* Prevent horizontal scroll on mobile */
+* {
+  max-width: 100vw;
 }
 
 :root {
@@ -54,12 +65,14 @@ body {
   background-color: var(--section-bgd);
   color: var(--nav-grey);
   width: 100%;
+  box-sizing: border-box;
 }
 
 .container {
   padding: 4rem;
   max-width: 1200px;
   margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .loader {
@@ -141,5 +154,6 @@ body {
 @media screen and (max-width: 500px) {
   .container {
     padding: 1rem;
+    box-sizing: border-box;
   }
 }

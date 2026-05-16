@@ -10,6 +10,9 @@
   overflow-y: scroll;
   transition: all 0.5s ease-in-out;
   z-index: 99999;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
 }
 
 .navbar.active {
@@ -24,8 +27,53 @@
   scroll-margin: 0;
 }
 
+/* Mobile-specific fixes */
+@media screen and (max-width: 768px) {
+  .navbar {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .navbar.active {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Prevent body scroll when navbar is open */
+  body.navbar-open {
+    overflow: hidden;
+  }
+}
+
+/* Prevent horizontal scroll and fix mobile scrolling */
+html,
+body {
+  overflow-x: hidden;
+  touch-action: pan-y;
+}
+
+/* Fix for mobile scroll glitch */
 .navbar-container {
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
   padding: 1rem 1.5rem;
+}
+
+/* Hide horizontal scrollbar on mobile */
+@media screen and (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 8px;
+  }
+
+  .navbar {
+    overflow-x: hidden;
+  }
+
+  .navbar-container {
+    max-width: 100%;
+  }
 }
 
 .top-details {
