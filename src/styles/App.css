@@ -82,28 +82,13 @@ body {
 /*  Load animations */
 .svg-wrapper {
   position: relative;
+  max-width: 90vw;
+  overflow: hidden;
 }
 
-@keyframes pageLoad {
-  0% {
-    stroke-dasharray: 140 540;
-    stroke-dashoffset: -474;
-    stroke-width: 8px;
-  }
-  100% {
-    stroke-width: 2px;
-    stroke-dashoffset: 0;
-    stroke-dasharray: 760;
-  }
-}
 .shape {
-  stroke-dasharray: 140 540;
-  stroke-dashoffset: -474;
-  stroke-width: 8px;
   fill: transparent;
   stroke: #149ddd;
-  border: 5px solid black;
-  animation: 3s ease 0s 1 pageLoad;
 }
 .text {
   font-size: 16px;
@@ -112,24 +97,48 @@ body {
   letter-spacing: 8px;
   color: #fff;
   position: absolute;
-  left: 10px;
-  top: 15px;
-  width: 100%;
-  transform: translate(-50% -50%);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.name-text {
+  display: inline-block;
+}
+
+.flag-wrapper {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Mobile text positioning */
+@media screen and (max-width: 500px) {
+  .text {
+    font-size: 13px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    white-space: normal;
+    text-align: center;
+    letter-spacing: 2px;
+    line-height: 24px;
+  }
 }
 
 @media screen and (max-width: 700px) {
   .container {
     padding: 3rem;
   }
+  .text {
+    font-size: 14px;
+    letter-spacing: 4px;
+  }
 }
 
 @media screen and (max-width: 500px) {
-  .text {
-    font-size: 13px;
-    position: absolute;
-    left: 20px;
-  }
   .container {
     padding: 1rem;
   }

@@ -66,7 +66,7 @@ export const CertificationsData = [
   {
     name: "Full Stack Developer",
     company: "Awdiz Institute",
-    app: "https://www.linkedin.com/in/siddharth-bankar-561a50236/overlay/1748277772341/single-media-viewer/?profileId=ACoAADrjMBkBAwmgijJ96qT_bP0xlyuSvEyeEWk",
+    app: "https://www.linkedin.com/in/siddharth-bankar-561a50236/overlay/Certifications/226082185/treasury/?profileId=ACoAADrjMBkBAwmgijJ96qT_bP0xlyuSvEyeEWk",
     tech: ["MERN Stack ( React JS, Node.js, Express.js, MongoDB )"],
   },
   {

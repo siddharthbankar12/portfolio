@@ -29,6 +29,13 @@ const About = () => {
             <motion.div
               initial={{ x: "-100%", opacity: 0 }}
               whileInView={horizontal}
+              className="about-img"
+            >
+              <img src={ProfileImg} alt="Profile" />
+            </motion.div>
+            <motion.div
+              initial={{ x: "100%", opacity: 0 }}
+              whileInView={horizontal}
               className="about-content text-justify"
             >
               <section>
@@ -58,13 +65,6 @@ const About = () => {
                   growth.
                 </p>
               </section>
-            </motion.div>
-            <motion.div
-              initial={{ x: "50", opacity: 0 }}
-              whileInView={horizontal}
-              className="about-img"
-            >
-              <img src={ProfileImg} alt="Profile" />
             </motion.div>
           </div>
         </div>

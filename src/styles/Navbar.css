@@ -42,8 +42,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  object-fit: cover;
-  object-position: bottom;
 }
 .profile-pic-small {
   height: 100%;
@@ -51,6 +49,9 @@
   border-radius: 50%;
   margin-bottom: 1rem;
   border: 5px solid var(--nav-deep-blue);
+  object-fit: contain;
+  object-position: center;
+  background-color: #f0f0f0;
 }
 
 .profile-name {
@@ -113,7 +114,7 @@
 }
 
 .mid-links.active {
-  /* color: var(--nav-blue); */
+  color: var(--nav-blue);
 }
 
 .mid-links:hover {

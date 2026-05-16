@@ -13,8 +13,6 @@ import {
   SiTypescript,
   SiFastify,
   SiPostgresql,
-  SiAwslambda,
-  SiAmazons3,
 } from "react-icons/si";
 
 export const SkillsData = [
@@ -85,14 +83,6 @@ export const SkillsData = [
   {
     name: "Bootstrap",
     icon: <SiBootstrap />,
-  },
-  {
-    name: "AWS Lambda",
-    icon: <SiAwslambda />,
-  },
-  {
-    name: "AWS S3",
-    icon: <SiAmazons3 />,
   },
   {
     name: "GitHub",

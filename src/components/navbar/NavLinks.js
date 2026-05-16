@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaLinkedin, FaWhatsapp } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
 import { BiEnvelope } from "react-icons/bi";
 import { BsGithub } from "react-icons/bs";
 
