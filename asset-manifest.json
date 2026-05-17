@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.74b9b9e6.css",
-    "main.js": "/portfolio/static/js/main.dada0a8b.js",
+    "main.js": "/portfolio/static/js/main.056113f9.js",
     "static/media/1.jpg": "/portfolio/static/media/1.2df7d1fdd57d2901b48f.jpg",
     "static/media/profile_me.jpg": "/portfolio/static/media/profile_me.21c9f7d8d5998c461062.jpg",
     "static/media/hero-bg-1.jpg": "/portfolio/static/media/hero-bg-1.5a3233c0bcb06a691fe2.jpg",
     "static/media/Siddharth_Bankar.pdf": "/portfolio/static/media/Siddharth_Bankar.100a1043abf6fcd57f62.pdf",
     "index.html": "/portfolio/index.html",
     "main.74b9b9e6.css.map": "/portfolio/static/css/main.74b9b9e6.css.map",
-    "main.dada0a8b.js.map": "/portfolio/static/js/main.dada0a8b.js.map"
+    "main.056113f9.js.map": "/portfolio/static/js/main.056113f9.js.map"
   },
   "entrypoints": [
     "static/css/main.74b9b9e6.css",
-    "static/js/main.dada0a8b.js"
+    "static/js/main.056113f9.js"
   ]
 }
