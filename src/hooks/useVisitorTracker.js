@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 
 const useVisitorTracker = () => {
   const [visitorCount, setVisitorCount] = useState(null);
-  const [isTracking, setIsTracking] = useState(true);
   const hasTrackedRef = useRef(false);
 
   // Get current location using browser's Geolocation API
@@ -36,7 +35,7 @@ const useVisitorTracker = () => {
   useEffect(() => {
     // Track page visit only once
     const trackVisit = async () => {
-      if (!isTracking || hasTrackedRef.current) return;
+      if (hasTrackedRef.current) return;
       hasTrackedRef.current = true;
 
       // Get current location first
@@ -109,7 +108,7 @@ const useVisitorTracker = () => {
     fetchVisitorCount();
   }, []); // Empty dependency array - runs only once on mount
 
-  return { visitorCount, isTracking };
+  return { visitorCount };
 };
 
 export default useVisitorTracker;
