@@ -1,75 +1,66 @@
 <div align="center">
-	<h1> My Portfolio </h1>
+	<h1>My Portfolio</h1>
+	<p>A showcase of my work as a Software Engineer</p>
 </div>
 
 ## Snapshot 📸
 
 ![Portfolio Landing Page](./src/images/readme.png)
 
-https://siddharthbankar12.github.io/portfolio/
+🌐 **Live Demo**: [https://siddharthbankar12.github.io/portfolio/](https://siddharthbankar12.github.io/portfolio/)
 
-## Tech Stack ✨
+## About Me 👨‍💻
 
-- [React.js](https://reactjs.org/) - UI Library
-- [Framer Motion](https://www.framer.com/motion/) - Animations
-- [Create React App](https://create-react-app.dev/) - Build tool
+**Siddharth Dadaram Bankar** - Software Engineer specializing in modern web development, mobile application development, and scalable software solutions. Holding an MCA and B.Sc. in Computer Science, I build clean, efficient, and user-centric digital products.
 
-## How to run locally 💻
+I'm passionate about solving real-world problems through technology and turning ideas into smooth, functional experiences.
 
-Follow these steps to run My Portfolio in your local machine.
+## Skills 🛠️
 
-### Clone this repository
+**Frontend**: React.js, React Native, JavaScript, TypeScript, HTML5, Tailwind CSS, Bootstrap
 
-```bash
-git clone https://github.com/siddharthbankar12/portfolio
-```
+**Backend**: Node.js, Express.js, Fastify, PHP, CodeIgniter
 
-### Navigate to directory
+**Databases**: MongoDB, MySQL, PostgreSQL, SQL
 
-```bash
-cd my-portfolio
-```
+**Tools & Platforms**: Redux, Socket.IO, GitHub, Firebase
 
-### Install NPM
+## Experience 💼
 
-```bash
-npm install
-```
+**Software Engineer Trainee** - Mindstack Software Pvt. Ltd. (August 2025 - Present)
 
-### Run
+- Working on web, application and backend development as part of the engineering team
 
-Run the development server to view the app.
+**Software Development Intern** - Mindstack Software Pvt. Ltd. (June 2025 - July 2025)
 
-```bash
-npm start
-```
+- Designed, developed, and tested software applications with active participation in code reviews
 
-Now, you can navigate to http://localhost:3000/ to view the app.
+**Junior Web Developer Intern** - Basil Infotech Limited (April 2025 - June 2025)
 
-### Build
+- Supported development of web applications with hands-on experience in clean, maintainable code
 
-```bash
-npm run build
-```
+## Projects 🚀
 
-### Deployment
+**Croma Clone** - Full-stack e-commerce platform using MERN stack with user, seller, and admin roles
 
-```bash
-npm run deploy
-```
+**CurrentSpotLight** - Real-time news application displaying latest headlines from News API
 
-## Backend API
+**TextUtils** - Text manipulation tool with word count, case conversion, and editing features
 
-The backend tracks visitors and provides a counter. It's deployed separately:
+## Certifications 🏆
 
-- **Frontend**: GitHub Pages (this repo)
-- **Backend**: Render.com ([deployment guide](backend/DEPLOYMENT.md))
+- Full Stack Developer - Awdiz Institute
+- JavaScript Foundations Professional Certificate - Mozilla & LinkedIn Learning
+- HTML & CSS - Udemy
+- MongoDB Essential Training - LinkedIn Learning
+- Learning SQL Programming - LinkedIn Learning
+- Learning Java 11 - LinkedIn Learning
 
-API endpoints:
+## Connect With Me 🤝
 
-- `POST /api/track-visit` - Track a page visit
-- `GET /api/visitor-count` - Get total unique visitors
+- **GitHub**: [@siddharthbankar12](https://github.com/siddharthbankar12)
+- **LinkedIn**: [Siddharth Bankar](https://www.linkedin.com/in/siddharth-bankar-561a50236/)
 
 ## Credits ✍
 
-Implementation by [@siddharthbankar12](https://github.com/siddharthbankar12)
+Portfolio built with ❤️ by [Siddharth Dadaram Bankar](https://github.com/siddharthbankar12)
