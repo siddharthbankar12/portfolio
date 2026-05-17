@@ -114,6 +114,35 @@ class VisitorService {
   }
 
   /**
+   * Reverse geocode coordinates to city/region using Nominatim (OpenStreetMap)
+   */
+  static async reverseGeocode(latitude, longitude) {
+    try {
+      const url = `https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}&addressdetails=1`;
+      const response = await axios.get(url, {
+        timeout: 3000,
+        headers: {
+          "User-Agent": "Portfolio-Visitor-Tracker/1.0",
+        },
+      });
+
+      if (response.data && response.data.address) {
+        const addr = response.data.address;
+        return {
+          country: addr.country || "Unknown",
+          region: addr.state || addr.region || "Unknown",
+          city:
+            addr.city || addr.town || addr.village || addr.suburb || "Unknown",
+        };
+      }
+      return null;
+    } catch (error) {
+      console.error("Reverse geocode error:", error.message);
+      return null;
+    }
+  }
+
+  /**
    * Track a new visitor
    */
   static async trackVisitor(visitData) {
@@ -132,6 +161,29 @@ class VisitorService {
     const hasBrowserLocation =
       latitude !== undefined && longitude !== undefined;
 
+    // Default values
+    let finalLocation = { ...location };
+
+    // If we have browser coordinates, use reverse geocoding to get city/region
+    if (hasBrowserLocation) {
+      const reverseLocation = await this.reverseGeocode(latitude, longitude);
+      if (reverseLocation) {
+        finalLocation = {
+          ...location,
+          ...reverseLocation,
+          latitude,
+          longitude,
+        };
+      } else {
+        // Fallback: use IP location but override coordinates
+        finalLocation = {
+          ...location,
+          latitude,
+          longitude,
+        };
+      }
+    }
+
     // Create visitor record
     const visitor = new Visitor({
       ip: ip ? ip.split(":").pop() : "unknown",
@@ -139,18 +191,11 @@ class VisitorService {
       referrer: referrer || null,
       language: language || "unknown",
       page,
-      // Use IP-based location as base
-      country: location.country,
-      region: location.region,
-      city: location.city,
-      latitude: location.latitude,
-      longitude: location.longitude,
-      ...(hasBrowserLocation && {
-        latitude,
-        longitude,
-        city: null,
-        region: null,
-      }),
+      country: finalLocation.country,
+      region: finalLocation.region,
+      city: finalLocation.city,
+      latitude: finalLocation.latitude,
+      longitude: finalLocation.longitude,
       // Explicitly set isBot to false for valid visitors
       isBot: false,
     });
