@@ -128,6 +128,10 @@ class VisitorService {
     // Get geolocation from IP (fallback if browser location not available)
     const location = await this.getGeolocation(ip);
 
+    // Determine if we have browser-provided coordinates
+    const hasBrowserLocation =
+      latitude !== undefined && longitude !== undefined;
+
     // Create visitor record
     const visitor = new Visitor({
       ip: ip ? ip.split(":").pop() : "unknown",
@@ -135,10 +139,18 @@ class VisitorService {
       referrer: referrer || null,
       language: language || "unknown",
       page,
-      ...location,
-      // Use browser-provided coordinates if available, otherwise use IP geolocation
-      latitude: latitude !== undefined ? latitude : location.latitude,
-      longitude: longitude !== undefined ? longitude : location.longitude,
+      // Use IP-based location as base
+      country: location.country,
+      region: location.region,
+      city: location.city,
+      latitude: location.latitude,
+      longitude: location.longitude,
+      ...(hasBrowserLocation && {
+        latitude,
+        longitude,
+        city: null,
+        region: null,
+      }),
       // Explicitly set isBot to false for valid visitors
       isBot: false,
     });
