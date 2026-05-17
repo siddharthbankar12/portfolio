@@ -1,6 +1,6 @@
 import React from "react";
 import "../../styles/Navbar.css";
-import { FaHome, FaLaptop } from "react-icons/fa";
+import { FaHome, FaLaptop, FaUsers } from "react-icons/fa";
 import { BiBookContent, BiServer, BiEnvelope } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
 import { Link } from "react-scroll";
@@ -8,6 +8,7 @@ import ProfileImg from "../../images/1.jpg";
 import NavLinks from "./NavLinks";
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion";
+import useVisitorTracker from "../../hooks/useVisitorTracker";
 
 const navVariants = {
   hidden: {
@@ -29,6 +30,8 @@ const navVariants = {
 };
 
 const Navbar = ({ nav, handleNav }) => {
+  const { visitorCount } = useVisitorTracker();
+
   const handleLinkClick = () => {
     handleNav(false);
   };
@@ -156,6 +159,17 @@ const Navbar = ({ nav, handleNav }) => {
               <li className="mid-link">Contact</li>
             </Link>
           </ul>
+          <div className="navbar-footer">
+            <div className="visitor-count">
+              <FaUsers className="visitor-icon" />
+              <span className="visitor-number">
+                Total Visitors:{" "}
+                {visitorCount !== null
+                  ? visitorCount.toLocaleString()
+                  : "Loading..."}
+              </span>
+            </div>
+          </div>
         </motion.div>
       </motion.nav>
     </AnimatePresence>

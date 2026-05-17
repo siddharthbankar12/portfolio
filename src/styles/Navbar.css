@@ -190,3 +190,45 @@ body {
   font-size: 65%;
   font-family: "Quicksand", sans-serif;
 }
+
+/* Navbar Footer with Visitor Count */
+.navbar-footer {
+  margin-top: auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--nav-deep-blue);
+  text-align: center;
+  width: 100%;
+}
+
+.visitor-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem 1rem;
+  background-color: var(--nav-deep-blue);
+  border-radius: 20px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.visitor-icon {
+  font-size: 1rem;
+  color: var(--nav-blue);
+}
+
+.visitor-number {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  font-family: "Poppins", sans-serif;
+}
+
+.navbar-copyright {
+  color: var(--nav-grey);
+  font-size: 0.75rem;
+  font-family: "Quicksand", sans-serif;
+  margin: 0;
+}

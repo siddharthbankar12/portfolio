@@ -58,6 +58,18 @@ npm run build
 npm run deploy
 ```
 
+## Backend API
+
+The backend tracks visitors and provides a counter. It's deployed separately:
+
+- **Frontend**: GitHub Pages (this repo)
+- **Backend**: Render.com ([deployment guide](backend/DEPLOYMENT.md))
+
+API endpoints:
+
+- `POST /api/track-visit` - Track a page visit
+- `GET /api/visitor-count` - Get total unique visitors
+
 ## Credits ✍
 
 Implementation by [@siddharthbankar12](https://github.com/siddharthbankar12)

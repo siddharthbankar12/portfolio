@@ -1,0 +1,179 @@
+const axios = require("axios");
+const Visitor = require("../models/Visitor");
+
+class VisitorService {
+  /**
+   * Check if user agent is a bot
+   */
+  static isBot(userAgent) {
+    const botPatterns = [
+      /bot/i,
+      /crawler/i,
+      /spider/i,
+      /googlebot/i,
+      /bingbot/i,
+      /slurp/i,
+      /duckduckbot/i,
+      /baiduspider/i,
+      /yandexbot/i,
+    ];
+    return botPatterns.some((pattern) => pattern.test(userAgent));
+  }
+
+  /**
+   * Validate if IP is a valid public IP address
+   */
+  static isValidIP(ip) {
+    if (!ip || typeof ip !== "string") return false;
+
+    // Remove IPv6 prefix if present
+    const cleanIP = ip.split(":").pop();
+
+    // Check for valid IPv4
+    const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
+    if (ipv4Regex.test(cleanIP)) {
+      const parts = cleanIP.split(".").map(Number);
+      return parts.every((part) => part >= 0 && part <= 255);
+    }
+
+    // Check for valid IPv6 (simplified)
+    const ipv6Regex = /^([0-9a-fA-F]{0,4}:){2,7}[0-9a-fA-F]{0,4}$/;
+    if (ipv6Regex.test(cleanIP)) return true;
+
+    return false;
+  }
+
+  /**
+   * Get geolocation data from IP
+   */
+  static async getGeolocation(ip) {
+    try {
+      // If IP is invalid, use the server's own location
+      const useServerLocation = !this.isValidIP(ip);
+      const url = useServerLocation
+        ? "https://ipinfo.io/json"
+        : `https://ipinfo.io/${ip}/json`;
+
+      const response = await axios.get(url, {
+        timeout: 2000,
+      });
+
+      // Check for error response
+      if (response.data && response.data.error) {
+        console.error("IPInfo.io error:", response.data.error);
+        return {
+          country: "Unknown",
+          region: "Unknown",
+          city: "Unknown",
+          latitude: null,
+          longitude: null,
+        };
+      }
+
+      // Check if the response contains valid location data
+      if (response.data && response.data.country) {
+        // Parse latitude and longitude from the "loc" field (format: "lat,lon")
+        let latitude = null;
+        let longitude = null;
+        if (response.data.loc) {
+          const parts = response.data.loc.split(",");
+          latitude = parseFloat(parts[0]) || null;
+          longitude = parseFloat(parts[1]) || null;
+        }
+
+        return {
+          country: response.data.country || "Unknown",
+          region: response.data.region || "Unknown",
+          city: response.data.city || "Unknown",
+          latitude,
+          longitude,
+        };
+      }
+
+      // Fallback values
+      return {
+        country: "Unknown",
+        region: "Unknown",
+        city: "Unknown",
+        latitude: null,
+        longitude: null,
+      };
+    } catch (error) {
+      console.error("Geolocation error:", error.message);
+      // Final fallback - return default values
+      return {
+        country: "Unknown",
+        region: "Unknown",
+        city: "Unknown",
+        latitude: null,
+        longitude: null,
+      };
+    }
+  }
+
+  /**
+   * Track a new visitor
+   */
+  static async trackVisitor(visitData) {
+    const { ip, userAgent, referrer, language, page, latitude, longitude } =
+      visitData;
+
+    // Skip bots
+    if (this.isBot(userAgent)) {
+      return { success: true, message: "Bot skipped" };
+    }
+
+    // Get geolocation from IP (fallback if browser location not available)
+    const location = await this.getGeolocation(ip);
+
+    // Create visitor record
+    const visitor = new Visitor({
+      ip: ip ? ip.split(":").pop() : "unknown",
+      userAgent,
+      referrer: referrer || null,
+      language: language || "unknown",
+      page,
+      ...location,
+      // Use browser-provided coordinates if available, otherwise null
+      latitude: latitude !== undefined ? latitude : null,
+      longitude: longitude !== undefined ? longitude : null,
+      // Explicitly set isBot to false for valid visitors
+      isBot: false,
+    });
+
+    await visitor.save();
+    return { success: true, visitor };
+  }
+
+  /**
+   * Get total unique visitors
+   */
+  static async getVisitorCount() {
+    return await Visitor.countDocuments({ isBot: false });
+  }
+
+  /**
+   * Get today's visitors
+   */
+  static async getTodayVisitorCount() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    return await Visitor.countDocuments({
+      isBot: false,
+      timestamp: { $gte: today },
+    });
+  }
+
+  /**
+   * Get recent visitors
+   */
+  static async getRecentVisitors(limit = 10) {
+    return await Visitor.find({ isBot: false })
+      .sort({ timestamp: -1 })
+      .limit(limit)
+      .select("ip country page timestamp");
+  }
+}
+
+module.exports = VisitorService;
