@@ -44,17 +44,33 @@ const PORT = process.env.PORT || 5001;
 const MONGO_URI =
   process.env.MONGO_URI || "mongodb://localhost:27017/portfolio";
 
+// Start server first, then connect to MongoDB
+const server = app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// Handle server errors
+server.on("error", (err) => {
+  if (err.syscall === "listen") {
+    console.error(`Port ${PORT} is already in use`);
+  }
+  throw err;
+});
+
+// Connect to MongoDB in background
 mongoose
   .connect(MONGO_URI)
   .then(() => {
     console.log("MongoDB connected");
-    app.listen(PORT, () => {
-      console.log(`Server running on port ${PORT}`);
-    });
   })
   .catch((err) => {
     console.error("MongoDB connection error:", err);
-    process.exit(1);
+    console.log("Server continues without MongoDB connection");
   });
+
+// Handle unhandled promise rejections
+process.on("unhandledRejection", (err) => {
+  console.error("Unhandled promise rejection:", err);
+});
 
 module.exports = app;
