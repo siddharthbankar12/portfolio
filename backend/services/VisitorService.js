@@ -50,9 +50,11 @@ class VisitorService {
     try {
       // If IP is invalid, use the server's own location
       const useServerLocation = !this.isValidIP(ip);
-      const url = useServerLocation
+      const apiKey = process.env.IPINFO_API_KEY;
+      const baseUrl = useServerLocation
         ? "https://ipinfo.io/json"
         : `https://ipinfo.io/${ip}/json`;
+      const url = apiKey ? `${baseUrl}?token=${apiKey}` : baseUrl;
 
       const response = await axios.get(url, {
         timeout: 2000,
@@ -134,9 +136,9 @@ class VisitorService {
       language: language || "unknown",
       page,
       ...location,
-      // Use browser-provided coordinates if available, otherwise null
-      latitude: latitude !== undefined ? latitude : null,
-      longitude: longitude !== undefined ? longitude : null,
+      // Use browser-provided coordinates if available, otherwise use IP geolocation
+      latitude: latitude !== undefined ? latitude : location.latitude,
+      longitude: longitude !== undefined ? longitude : location.longitude,
       // Explicitly set isBot to false for valid visitors
       isBot: false,
     });

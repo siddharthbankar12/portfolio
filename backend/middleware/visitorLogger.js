@@ -31,9 +31,11 @@ const getGeolocation = async (ip) => {
   try {
     // If IP is invalid, use the server's own location
     const useServerLocation = !isValidIP(ip);
-    const url = useServerLocation
+    const apiKey = process.env.IPINFO_API_KEY;
+    const baseUrl = useServerLocation
       ? "https://ipinfo.io/json"
       : `https://ipinfo.io/${ip}/json`;
+    const url = apiKey ? `${baseUrl}?token=${apiKey}` : baseUrl;
 
     const response = await axios.get(url, {
       timeout: 2000,
@@ -152,24 +154,52 @@ const logVisitor = async (req, res, next) => {
 
     logVisitorCache.set(cacheKey, now);
 
-    // Get geolocation (fire and forget - don't wait)
-    getGeolocation(ip).then((location) => {
-      const visitor = new Visitor({
-        ip: ip ? ip.split(":").pop() : "unknown", // Remove IPv6 prefix if present
-        userAgent,
-        referrer,
-        language,
-        page,
-        ...location,
-        // Support browser-provided coordinates
-        latitude: req.body?.latitude !== undefined ? req.body.latitude : null,
-        longitude:
-          req.body?.longitude !== undefined ? req.body.longitude : null,
-        // Explicitly set isBot to false for valid visitors
-        isBot: false,
+    // Get geolocation and save visitor (wait for geolocation to resolve)
+    getGeolocation(ip)
+      .then((location) => {
+        const visitor = new Visitor({
+          ip: ip ? ip.split(":").pop() : "unknown", // Remove IPv6 prefix if present
+          userAgent,
+          referrer,
+          language,
+          page,
+          ...location,
+          // Support browser-provided coordinates (takes precedence over IP geolocation)
+          latitude:
+            req.body?.latitude !== undefined
+              ? req.body.latitude
+              : location.latitude,
+          longitude:
+            req.body?.longitude !== undefined
+              ? req.body.longitude
+              : location.longitude,
+          // Explicitly set isBot to false for valid visitors
+          isBot: false,
+        });
+        visitor
+          .save()
+          .catch((err) => console.error("Visitor save error:", err));
+      })
+      .catch((err) => {
+        console.error("Geolocation error in logVisitor:", err.message);
+        // Save visitor without location data as fallback
+        const visitor = new Visitor({
+          ip: ip ? ip.split(":").pop() : "unknown",
+          userAgent,
+          referrer,
+          language,
+          page,
+          country: "Unknown",
+          region: "Unknown",
+          city: "Unknown",
+          latitude: null,
+          longitude: null,
+          isBot: false,
+        });
+        visitor
+          .save()
+          .catch((err) => console.error("Visitor save error:", err));
       });
-      visitor.save().catch((err) => console.error("Visitor save error:", err));
-    });
 
     next();
   } catch (error) {
