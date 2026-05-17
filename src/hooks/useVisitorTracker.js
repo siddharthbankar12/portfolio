@@ -53,8 +53,9 @@ const useVisitorTracker = () => {
       };
 
       try {
-        // Backend URL from environment variable (set during deployment)
-        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        const backendUrl =
+          window.REACT_APP_CONFIG?.BACKEND_URL ||
+          process.env.REACT_APP_BACKEND_URL;
 
         if (!backendUrl) {
           console.warn(
@@ -82,7 +83,9 @@ const useVisitorTracker = () => {
     // Fetch visitor count
     const fetchVisitorCount = async () => {
       try {
-        const backendUrl = process.env.REACT_APP_BACKEND_URL;
+        const backendUrl =
+          window.REACT_APP_CONFIG?.BACKEND_URL ||
+          process.env.REACT_APP_BACKEND_URL;
 
         if (!backendUrl) {
           console.warn(

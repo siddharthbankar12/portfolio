@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -22,5 +22,11 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      // Runtime configuration for backend URL
+      window.REACT_APP_CONFIG = window.REACT_APP_CONFIG || {};
+      window.REACT_APP_CONFIG.BACKEND_URL =
+        window.REACT_APP_CONFIG.BACKEND_URL || "http://localhost:5001";
+    </script>
   </body>
 </html>

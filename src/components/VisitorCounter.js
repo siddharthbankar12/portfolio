@@ -9,7 +9,9 @@ const VisitorCounter = () => {
     const fetchVisitorCount = async () => {
       try {
         const backendUrl =
-          process.env.REACT_APP_BACKEND_URL || "http://localhost:5001";
+          window.REACT_APP_CONFIG?.BACKEND_URL ||
+          process.env.REACT_APP_BACKEND_URL ||
+          "http://localhost:5001";
         const response = await fetch(`${backendUrl}/api/visitor-count`);
         const data = await response.json();
         setVisitorCount(data.count || 0);
