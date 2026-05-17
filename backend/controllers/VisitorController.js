@@ -6,7 +6,8 @@ class VisitorController {
    */
   static async trackVisit(req, res) {
     try {
-      const { userAgent, referrer, language, page } = req.body;
+      const { userAgent, referrer, language, page, latitude, longitude } =
+        req.body;
 
       // Get real IP from request headers (works behind proxies)
       let ip =
@@ -44,6 +45,8 @@ class VisitorController {
         referrer,
         language,
         page,
+        latitude,
+        longitude,
       });
 
       res.status(200).json(result);
