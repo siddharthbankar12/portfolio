@@ -119,3 +119,15 @@ textarea {
     font-size: 70%;
   }
 }
+
+.success-msg {
+  color: #4caf50;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.error-msg {
+  color: #f44336;
+  margin-top: 1rem;
+  text-align: center;
+}
