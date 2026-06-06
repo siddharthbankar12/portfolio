@@ -1,10 +1,13 @@
 import { useEffect, useState, useRef } from "react";
+import { getVisitorCount, trackVisit } from "../services/apiCalls";
+
+let cachedVisitorCount = null;
+let hasFetchedRef = false;
 
 const useVisitorTracker = () => {
-  const [visitorCount, setVisitorCount] = useState(null);
+  const [visitorCount, setVisitorCount] = useState(cachedVisitorCount || null);
   const hasTrackedRef = useRef(false);
 
-  // Get current location using browser's Geolocation API
   const getCurrentLocation = () => {
     return new Promise((resolve) => {
       if (!navigator.geolocation) {
@@ -26,19 +29,17 @@ const useVisitorTracker = () => {
         {
           enableHighAccuracy: true,
           timeout: 5000,
-          maximumAge: 300000, // 5 minutes
+          maximumAge: 300000,
         },
       );
     });
   };
 
   useEffect(() => {
-    // Track page visit only once
-    const trackVisit = async () => {
+    const trackPageVisit = async () => {
       if (hasTrackedRef.current) return;
       hasTrackedRef.current = true;
 
-      // Get current location first
       const location = await getCurrentLocation();
 
       const visitData = {
@@ -53,63 +54,29 @@ const useVisitorTracker = () => {
       };
 
       try {
-        const backendUrl =
-          window.REACT_APP_CONFIG?.BACKEND_URL ||
-          process.env.REACT_APP_BACKEND_URL;
-
-        if (!backendUrl) {
-          console.warn(
-            "REACT_APP_BACKEND_URL not set, skipping visit tracking",
-          );
-          return;
-        }
-
-        await fetch(`${backendUrl}/api/track-visit`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(visitData),
-          // Don't wait for response - fire and forget
-          keepalive: true,
-        });
+        trackVisit(visitData);
       } catch (error) {
         console.log("Visit tracking failed:", error);
       }
     };
 
-    trackVisit();
+    trackPageVisit();
 
-    // Fetch visitor count
     const fetchVisitorCount = async () => {
+      if (hasFetchedRef) return;
+      hasFetchedRef = true;
       try {
-        const backendUrl =
-          window.REACT_APP_CONFIG?.BACKEND_URL ||
-          process.env.REACT_APP_BACKEND_URL;
-
-        if (!backendUrl) {
-          console.warn(
-            "REACT_APP_BACKEND_URL not set, cannot fetch visitor count",
-          );
-          setVisitorCount(0);
-          return;
-        }
-
-        const response = await fetch(`${backendUrl}/api/visitor-count`);
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
+        const data = await getVisitorCount();
+        cachedVisitorCount = data.count;
         setVisitorCount(data.count);
       } catch (error) {
         console.error("Failed to fetch visitor count:", error);
-        // Set to 0 instead of null so UI shows "0" instead of "---"
         setVisitorCount(0);
       }
     };
 
     fetchVisitorCount();
-  }, []); // Empty dependency array - runs only once on mount
+  }, []);
 
   return { visitorCount };
 };

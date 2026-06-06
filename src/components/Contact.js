@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Contact.css";
 import { motion } from "framer-motion";
+import { sendContactEmail } from "../services/apiCalls";
 
 const Contact = () => {
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle");
+
+  useEffect(() => {
+    if (status === "success" || status === "error") {
+      const timer = setTimeout(() => setStatus("idle"), 10000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
+
   const fade = {
     opacity: 1,
     transition: {
@@ -16,6 +27,24 @@ const Contact = () => {
     transition: {
       duration: 1.5,
     },
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sending");
+    
+    try {
+      await sendContactEmail(formData);
+      setStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+    } catch (error) {
+      setStatus("error");
+      setFormData({ name: "", email: "", message: "" });
+    }
   };
 
   return (
@@ -78,11 +107,7 @@ const Contact = () => {
               initial={{ opacity: 0, y: "50px" }}
               whileInView={verticalLeft}
             >
-              <form
-                name="contact-form"
-                method="POST"
-                action="https://formsubmit.co/siddharthbankar1204@gmail.com"
-              >
+              <form onSubmit={handleSubmit}>
                 <input type="hidden" name="form-name" value="contact-form" />
                 <div className="form-top">
                   <div className="name">
@@ -94,6 +119,8 @@ const Contact = () => {
                       name="name"
                       id="name"
                       placeholder="Enter your name"
+                      value={formData.name}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -107,6 +134,8 @@ const Contact = () => {
                       name="email"
                       id="email"
                       placeholder="Enter your email address"
+                      value={formData.email}
+                      onChange={handleChange}
                       required
                     />
                   </div>
@@ -122,16 +151,20 @@ const Contact = () => {
                       name="message"
                       id="message"
                       placeholder="Hi, I would like to discuss a project or opportunity with you."
+                      value={formData.message}
+                      onChange={handleChange}
                       required
                     ></textarea>
                   </div>
                 </div>
 
                 <div className="form-btn">
-                  <button type="submit" className="hero-contact">
-                    Send Message
+                  <button type="submit" className="hero-contact" disabled={status === "sending"}>
+                    {status === "sending" ? "Sending..." : "Send Message"}
                   </button>
                 </div>
+                {status === "success" && <p className="success-msg">Message sent successfully!</p>}
+                {status === "error" && <p className="error-msg">Failed to send message. Please try again.</p>}
               </form>
             </motion.div>
           </div>

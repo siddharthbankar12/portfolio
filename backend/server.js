@@ -4,6 +4,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const visitRoutes = require("./routes/visit");
+const emailRoutes = require("./routes/email");
 
 const app = express();
 
@@ -19,6 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.use("/api", visitRoutes);
+app.use("/api/email", emailRoutes);
 
 // Health check
 app.get("/health", (req, res) => {
@@ -40,9 +42,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({ error: "Something went wrong!" });
 });
 
-const PORT = process.env.PORT || 5001;
-const MONGO_URI =
-  process.env.MONGO_URI || "mongodb://localhost:27017/portfolio";
+const PORT = process.env.PORT;
+const MONGO_URI = process.env.MONGO_URI;
 
 // Start server first, then connect to MongoDB
 const server = app.listen(PORT, () => {
