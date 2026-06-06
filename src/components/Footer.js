@@ -3,11 +3,13 @@ import { FaLinkedin, FaEnvelope, FaGithub } from "react-icons/fa";
 import "../styles/Footer.css";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="footer-container">
         <p className="footer-text">
-          Copyright © 2025 Siddharth Bankar. All rights reserved.
+          Copyright © {currentYear} Siddharth Bankar. All rights reserved.
         </p>
         <div className="footer-links">
           {/* LinkedIn */}

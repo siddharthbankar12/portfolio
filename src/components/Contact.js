@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Contact.css";
 import { motion } from "framer-motion";
 import { sendContactEmail } from "../services/apiCalls";
@@ -6,6 +6,13 @@ import { sendContactEmail } from "../services/apiCalls";
 const Contact = () => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState("idle");
+
+  useEffect(() => {
+    if (status === "success" || status === "error") {
+      const timer = setTimeout(() => setStatus("idle"), 10000);
+      return () => clearTimeout(timer);
+    }
+  }, [status]);
 
   const fade = {
     opacity: 1,
@@ -36,6 +43,7 @@ const Contact = () => {
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       setStatus("error");
+      setFormData({ name: "", email: "", message: "" });
     }
   };
 

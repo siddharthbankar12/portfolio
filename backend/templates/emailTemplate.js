@@ -64,12 +64,38 @@ const createEmailTemplate = ({ name, email, message }) => `
 
     <!-- Footer -->
     <div style="background: #f8fafc; padding: 15px; text-align: center; color: #6b7280; font-size: 13px;">
-      This email was automatically generated from your portfolio contact form.
-      <br />
       © ${new Date().getFullYear()} Siddharth Bankar Portfolio
     </div>
   </div>
 </div>
 `;
 
-module.exports = { createEmailTemplate };
+const createThankYouTemplate = ({ name }) => `
+<div style="font-family: Arial, Helvetica, sans-serif; background-color: #f4f6f9; padding: 30px;">
+  <div style="max-width: 650px; margin: auto; background: #ffffff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    
+    <div style="background: #2563eb; color: #ffffff; padding: 20px; text-align: center;">
+      <h2 style="margin: 0;">Thank You for Your Message</h2>
+    </div>
+
+    <div style="padding: 30px;">
+      <p style="font-size: 16px; color: #333;">
+        Hi ${name},
+      </p>
+      <p style="font-size: 16px; color: #333;">
+        Thank you for reaching out! I've received your message and will get back to you as soon as possible.
+      </p>
+      <p style="font-size: 16px; color: #333;">
+        Best regards,<br>
+        Siddharth Bankar
+      </p>
+    </div>
+
+    <div style="background: #f8fafc; padding: 15px; text-align: center; color: #6b7280; font-size: 13px;">
+      © ${new Date().getFullYear()} Siddharth Bankar Portfolio
+    </div>
+  </div>
+</div>
+`;
+
+module.exports = { createEmailTemplate, createThankYouTemplate };

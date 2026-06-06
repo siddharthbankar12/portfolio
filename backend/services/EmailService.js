@@ -1,5 +1,5 @@
 const nodemailer = require("nodemailer");
-const { createEmailTemplate } = require("../templates/emailTemplate");
+const { createEmailTemplate, createThankYouTemplate } = require("../templates/emailTemplate");
 
 class EmailService {
   static createTransporter() {
@@ -42,10 +42,17 @@ class EmailService {
 
     const transporter = this.createTransporter();
     const mailOptions = this.createMailOptions({ name, email, message });
+    const thankYouOptions = {
+      from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: `Thank you for your message, ${name}!`,
+      html: createThankYouTemplate({ name }),
+    };
 
     try {
-      const info = await transporter.sendMail(mailOptions);
-      return { success: true, message: "Email sent successfully" };
+      await transporter.sendMail(mailOptions);
+      await transporter.sendMail(thankYouOptions);
+      return { success: true, message: "Emails sent successfully" };
     } catch (error) {
       console.error("Email error:", error);
       return { success: false, error: "Failed to send email" };
