@@ -2,14 +2,45 @@ const nodemailer = require("nodemailer");
 const { createEmailTemplate, createThankYouTemplate } = require("../templates/emailTemplate");
 
 class EmailService {
-  static createTransporter() {
-    return nodemailer.createTransport({
-      service: "gmail",
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    });
+  static transporter = null;
+
+  static async getTransporter() {
+    if (!this.transporter) {
+      const emailUser = process.env.EMAIL_USER;
+      const emailPass = process.env.EMAIL_PASS;
+
+      if (!emailUser || !emailPass) {
+        throw new Error("EMAIL_USER and EMAIL_PASS environment variables are required");
+      }
+
+      const emailTo = process.env.EMAIL_TO;
+      if (!emailTo) {
+        throw new Error("EMAIL_TO environment variable is required");
+      }
+
+      this.transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        auth: {
+          user: emailUser,
+          pass: emailPass,
+        },
+        tls: {
+          rejectUnauthorized: false,
+        },
+        timeout: 30000,
+      });
+
+      try {
+        await this.transporter.verify();
+        console.log("SMTP transporter verified successfully");
+      } catch (error) {
+        console.error("SMTP transporter verification failed:", error.message);
+        throw new Error(`Email service not configured properly: ${error.message}`);
+      }
+    }
+    return this.transporter;
   }
 
   static createMailOptions({ name, email, message }) {
@@ -40,7 +71,7 @@ class EmailService {
       return { success: false, error: validation.error };
     }
 
-    const transporter = this.createTransporter();
+    const transporter = await this.getTransporter();
     const mailOptions = this.createMailOptions({ name, email, message });
     const thankYouOptions = {
       from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
@@ -50,12 +81,13 @@ class EmailService {
     };
 
     try {
-      await transporter.sendMail(mailOptions);
-      await transporter.sendMail(thankYouOptions);
+      const info1 = await transporter.sendMail(mailOptions);
+      const info2 = await transporter.sendMail(thankYouOptions);
+      console.log("Emails sent:", info1.messageId, info2.messageId);
       return { success: true, message: "Emails sent successfully" };
     } catch (error) {
       console.error("Email error:", error);
-      return { success: false, error: "Failed to send email" };
+      return { success: false, error: error.message || "Failed to send email" };
     }
   }
 }
