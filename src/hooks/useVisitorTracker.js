@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { getVisitorCount, trackVisit } from "../services/apiCalls";
 
 let cachedVisitorCount = null;
@@ -9,7 +9,7 @@ const useVisitorTracker = () => {
   const hasTrackedRef = useRef(false);
   const listenerAddedRef = useRef(false);
 
-  const getCurrentLocation = () => {
+  const getCurrentLocation = useCallback(() => {
     return new Promise((resolve) => {
       if (!navigator.geolocation) {
         resolve(null);
@@ -32,9 +32,9 @@ const useVisitorTracker = () => {
         }
       );
     });
-  };
+  }, []);
 
-  const trackVisitWithLocation = async () => {
+  const trackVisitWithLocation = useCallback(async () => {
     if (hasTrackedRef.current) return;
     hasTrackedRef.current = true;
 
@@ -56,7 +56,7 @@ const useVisitorTracker = () => {
     } catch (error) {
       console.log("Visit tracking failed:", error);
     }
-  };
+  }, [getCurrentLocation]);
 
   useEffect(() => {
     trackVisitWithLocation();
@@ -93,7 +93,7 @@ const useVisitorTracker = () => {
     const timer = setTimeout(addInteractionListener, 100);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [trackVisitWithLocation]);
 
   return { visitorCount };
 };
