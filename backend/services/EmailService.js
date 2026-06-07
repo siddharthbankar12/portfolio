@@ -11,18 +11,13 @@ class EmailService {
     if (!this.transporter) {
       const { EMAIL_USER, EMAIL_PASS, EMAIL_TO } = process.env;
 
-      if (!EMAIL_USER) {
-        throw new Error("Email credentials not configured (EMAIL_USER required)");
-      }
-      
-      if (!EMAIL_PASS) {
-        throw new Error("Pass credentials not configured (EMAIL_PASS required)");
-      }
+      if (!EMAIL_USER) throw new Error("EMAIL_USER not configured");
+      if (!EMAIL_PASS) throw new Error("EMAIL_PASS not configured");
 
       this.transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
+        port: 465,
+        secure: true, 
         family: 4,
         auth: {
           user: EMAIL_USER,
@@ -34,11 +29,10 @@ class EmailService {
         await this.transporter.verify();
         console.log("SMTP transporter verified successfully");
       } catch (error) {
-        console.error("SMTP transporter verification failed:", error);
+        this.transporter = null; 
+        console.error("SMTP verification failed:", error);
         throw new Error(
-          `Email service not configured properly: ${
-            error instanceof Error ? error.message : "Unknown error"
-          }`,
+          `Email service not configured properly: ${error.message}`,
         );
       }
     }
