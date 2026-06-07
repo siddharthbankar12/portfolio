@@ -11,8 +11,6 @@ class EmailService {
     if (!this.transporter) {
       const { EMAIL_USER, EMAIL_PASS, EMAIL_TO } = process.env;
 
-      console.log(EMAIL_USER, EMAIL_PASS, EMAIL_TO, "variables")
-
       if (!EMAIL_USER) {
         throw new Error("Email credentials not configured (EMAIL_USER required)");
       }
@@ -22,7 +20,10 @@ class EmailService {
       }
 
       this.transporter = nodemailer.createTransport({
-        service: "gmail",
+        host: "smtp.gmail.com",
+        port: 587,
+        secure: false,
+        family: 4,
         auth: {
           user: EMAIL_USER,
           pass: EMAIL_PASS,
