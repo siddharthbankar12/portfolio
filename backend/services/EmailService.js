@@ -1,3 +1,6 @@
+const dns = require("dns");
+dns.setDefaultResultOrder("ipv4first");
+
 const nodemailer = require("nodemailer");
 const {
   createEmailTemplate,
@@ -16,9 +19,8 @@ class EmailService {
 
       this.transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
-        port: 465,
-        secure: true, 
-        family: 4,
+        port: 587,    
+        secure: false,  
         auth: {
           user: EMAIL_USER,
           pass: EMAIL_PASS,
@@ -29,7 +31,7 @@ class EmailService {
         await this.transporter.verify();
         console.log("SMTP transporter verified successfully");
       } catch (error) {
-        this.transporter = null; 
+        this.transporter = null;
         console.error("SMTP verification failed:", error);
         throw new Error(
           `Email service not configured properly: ${error.message}`,
