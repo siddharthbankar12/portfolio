@@ -20,6 +20,7 @@ const useVisitorTracker = () => {
           resolve({
             latitude: position.coords.latitude,
             longitude: position.coords.longitude,
+            accuracy: position.coords.accuracy,
           });
         },
         (error) => {
@@ -28,8 +29,8 @@ const useVisitorTracker = () => {
         },
         {
           enableHighAccuracy: true,
-          timeout: 5000,
-          maximumAge: 300000,
+          timeout: 10000,
+          maximumAge: 60000,
         },
       );
     });

@@ -149,22 +149,17 @@ class VisitorService {
     const { ip, userAgent, referrer, language, page, latitude, longitude } =
       visitData;
 
-    // Skip bots
     if (this.isBot(userAgent)) {
       return { success: true, message: "Bot skipped" };
     }
 
-    // Get geolocation from IP (fallback if browser location not available)
     const location = await this.getGeolocation(ip);
 
-    // Determine if we have browser-provided coordinates
     const hasBrowserLocation =
       latitude !== undefined && longitude !== undefined;
 
-    // Default values
     let finalLocation = { ...location };
 
-    // If we have browser coordinates, use reverse geocoding to get city/region
     if (hasBrowserLocation) {
       const reverseLocation = await this.reverseGeocode(latitude, longitude);
       if (reverseLocation) {
@@ -175,7 +170,6 @@ class VisitorService {
           longitude,
         };
       } else {
-        // Fallback: use IP location but override coordinates
         finalLocation = {
           ...location,
           latitude,
@@ -184,7 +178,6 @@ class VisitorService {
       }
     }
 
-    // Create visitor record
     const visitor = new Visitor({
       ip: ip ? ip.split(":").pop() : "unknown",
       userAgent,
@@ -196,7 +189,6 @@ class VisitorService {
       city: finalLocation.city,
       latitude: finalLocation.latitude,
       longitude: finalLocation.longitude,
-      // Explicitly set isBot to false for valid visitors
       isBot: false,
     });
 
