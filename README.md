@@ -17,7 +17,7 @@ I'm passionate about solving real-world problems through technology and turning 
 
 ## Skills 🛠️
 
-**Frontend**: React.js, React Native, JavaScript, TypeScript, HTML5, Tailwind CSS, Bootstrap
+**Frontend**: React.js, React Native, Next.js, JavaScript, TypeScript, HTML5, Tailwind CSS, Bootstrap
 
 **Backend**: Node.js, Express.js, Fastify, PHP, CodeIgniter
 

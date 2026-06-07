@@ -13,6 +13,7 @@ import {
   SiTypescript,
   SiFastify,
   SiPostgresql,
+  SiNextdotjs,
 } from "react-icons/si";
 
 export const SkillsData = [
@@ -23,6 +24,10 @@ export const SkillsData = [
   {
     name: "React Native",
     icon: <FaReact />,
+  },
+  {
+    name: "Next.js",
+    icon: <SiNextdotjs />,
   },
   {
     name: "Node.js",
