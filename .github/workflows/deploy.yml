@@ -64,9 +64,10 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               ref: context.ref,
-              auto_merge: false
+              auto_merge: false,
+              required_contexts: []
             });
-            console.log(`::set-output name=deployment_id::${deployment.data.id}`);
+            return { deployment_id: deployment.data.id };
 
       - name: Download build artifacts
         uses: actions/download-artifact@v4
