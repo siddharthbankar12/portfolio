@@ -65,7 +65,8 @@ jobs:
               repo: context.repo.repo,
               ref: context.ref,
               environment: 'github-pages',
-              auto_merge: false
+              auto_merge: false,
+              transient_environment: false
             });
             core.setOutput('deployment_id', deployment.data.id);
 
