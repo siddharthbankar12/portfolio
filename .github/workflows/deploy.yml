@@ -54,9 +54,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: https://siddharthbankar12.github.io/portfolio
     steps:
       - name: Create GitHub Deployment
         id: deployment
