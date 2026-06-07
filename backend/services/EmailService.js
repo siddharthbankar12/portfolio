@@ -11,6 +11,8 @@ class EmailService {
     if (!this.transporter) {
       const { EMAIL_USER, EMAIL_PASS, EMAIL_TO } = process.env;
 
+      console.log(EMAIL_USER, EMAIL_PASS, EMAIL_TO, "variables")
+
       if (!EMAIL_USER) {
         throw new Error("Email credentials not configured (EMAIL_USER required)");
       }
