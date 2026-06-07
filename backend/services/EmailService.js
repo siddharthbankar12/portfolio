@@ -1,45 +1,37 @@
 const nodemailer = require("nodemailer");
-const { createEmailTemplate, createThankYouTemplate } = require("../templates/emailTemplate");
+const {
+  createEmailTemplate,
+  createThankYouTemplate,
+} = require("../templates/emailTemplate");
 
 class EmailService {
   static transporter = null;
 
   static async getTransporter() {
     if (!this.transporter) {
-      const emailUser = process.env.EMAIL_USER;
-      const emailPass = process.env.EMAIL_PASS;
-
-      if (!emailUser || !emailPass) {
-        throw new Error("EMAIL_USER and EMAIL_PASS environment variables are required");
-      }
-
-      const emailTo = process.env.EMAIL_TO;
-      if (!emailTo) {
-        throw new Error("EMAIL_TO environment variable is required");
-      }
+      const { EMAIL_USER, EMAIL_PASS, EMAIL_TO } = process.env;
 
       this.transporter = nodemailer.createTransport({
-        host: "smtp.gmail.com",
-        port: 587,
-        secure: false,
+        service: "gmail",
         auth: {
-          user: emailUser,
-          pass: emailPass,
+          user: EMAIL_USER,
+          pass: EMAIL_PASS,
         },
-        tls: {
-          rejectUnauthorized: false,
-        },
-        timeout: 30000,
       });
 
       try {
         await this.transporter.verify();
         console.log("SMTP transporter verified successfully");
       } catch (error) {
-        console.error("SMTP transporter verification failed:", error.message);
-        throw new Error(`Email service not configured properly: ${error.message}`);
+        console.error("SMTP transporter verification failed:", error);
+        throw new Error(
+          `Email service not configured properly: ${
+            error instanceof Error ? error.message : "Unknown error"
+          }`,
+        );
       }
     }
+
     return this.transporter;
   }
 
@@ -71,16 +63,16 @@ class EmailService {
       return { success: false, error: validation.error };
     }
 
-    const transporter = await this.getTransporter();
-    const mailOptions = this.createMailOptions({ name, email, message });
-    const thankYouOptions = {
-      from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
-      to: email,
-      subject: `Thank you for your message, ${name}!`,
-      html: createThankYouTemplate({ name }),
-    };
-
     try {
+      const transporter = await this.getTransporter();
+      const mailOptions = this.createMailOptions({ name, email, message });
+      const thankYouOptions = {
+        from: `"Portfolio Contact Form" <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject: `Thank you for your message, ${name}!`,
+        html: createThankYouTemplate({ name }),
+      };
+
       const info1 = await transporter.sendMail(mailOptions);
       const info2 = await transporter.sendMail(thankYouOptions);
       console.log("Emails sent:", info1.messageId, info2.messageId);
