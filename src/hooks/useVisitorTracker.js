@@ -7,6 +7,7 @@ let hasFetchedRef = false;
 const useVisitorTracker = () => {
   const [visitorCount, setVisitorCount] = useState(cachedVisitorCount || null);
   const hasTrackedRef = useRef(false);
+  const listenerAddedRef = useRef(false);
 
   const getCurrentLocation = () => {
     return new Promise((resolve) => {
@@ -23,45 +24,42 @@ const useVisitorTracker = () => {
             accuracy: position.coords.accuracy,
           });
         },
-        (error) => {
-          console.log("Geolocation error:", error.message);
-          resolve(null);
-        },
+        () => resolve(null),
         {
           enableHighAccuracy: true,
-          timeout: 10000,
+          timeout: 15000,
           maximumAge: 60000,
-        },
+        }
       );
     });
   };
 
-  useEffect(() => {
-    const trackPageVisit = async () => {
-      if (hasTrackedRef.current) return;
-      hasTrackedRef.current = true;
+  const trackVisitWithLocation = async () => {
+    if (hasTrackedRef.current) return;
+    hasTrackedRef.current = true;
 
-      const location = await getCurrentLocation();
+    const location = await getCurrentLocation();
 
-      const visitData = {
-        userAgent: navigator.userAgent,
-        referrer: document.referrer,
-        language: navigator.language,
-        page: window.location.pathname,
-        ...(location && {
-          latitude: location.latitude,
-          longitude: location.longitude,
-        }),
-      };
-
-      try {
-        trackVisit(visitData);
-      } catch (error) {
-        console.log("Visit tracking failed:", error);
-      }
+    const visitData = {
+      userAgent: navigator.userAgent,
+      referrer: document.referrer,
+      language: navigator.language,
+      page: window.location.pathname,
+      ...(location && {
+        latitude: location.latitude,
+        longitude: location.longitude,
+      }),
     };
 
-    trackPageVisit();
+    try {
+      await trackVisit(visitData);
+    } catch (error) {
+      console.log("Visit tracking failed:", error);
+    }
+  };
+
+  useEffect(() => {
+    trackVisitWithLocation();
 
     const fetchVisitorCount = async () => {
       if (hasFetchedRef) return;
@@ -77,6 +75,24 @@ const useVisitorTracker = () => {
     };
 
     fetchVisitorCount();
+
+    const addInteractionListener = () => {
+      if (listenerAddedRef.current) return;
+      listenerAddedRef.current = true;
+
+      const handleInteraction = () => {
+        trackVisitWithLocation();
+        document.removeEventListener("touchstart", handleInteraction);
+        document.removeEventListener("click", handleInteraction);
+      };
+
+      document.addEventListener("touchstart", handleInteraction, { once: true });
+      document.addEventListener("click", handleInteraction, { once: true });
+    };
+
+    const timer = setTimeout(addInteractionListener, 100);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return { visitorCount };
