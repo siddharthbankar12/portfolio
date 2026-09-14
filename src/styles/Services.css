@@ -1,66 +1,103 @@
 .services-box {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 1.5rem;
+  row-gap: 2rem;
 }
 
 .services-card {
-  width: fit-content;
-  max-width: 300px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(20, 157, 221, 0.15);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  width: 100%;
   margin: 0 auto;
-  /* cursor: pointer; */
+  color: var(--nav-blue);
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 1.5rem;
-  border-radius: 5px;
-  transition: all 0.4s ease;
-  border: 2px solid rgb(75, 75, 75);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
 
 .services-card:hover {
-  box-shadow: inset 6px 6px 30px rgb(75, 75, 75);
-  border: none;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(20, 157, 221, 0.12);
+  border-color: var(--nav-blue);
+  background: rgba(20, 157, 221, 0.06);
 }
 
 .services-icon {
-  font-size: 3rem;
+  font-size: 2.8rem;
   color: var(--nav-blue);
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.services-card:hover .services-icon {
+  transform: scale(1.15);
 }
 
 .services-title {
-  font-size: 1.3rem;
-  margin-bottom: 1rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--soft-white);
+  margin-bottom: 0.75rem;
 }
 
 .services-desc {
-  font-size: 0.8rem;
-  line-height: 1.5;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--nav-grey);
 }
 
-/* Media Queries */
-@media screen and (max-width: 768px) {
-  .services-card {
-    width: 100%;
-    padding: 1rem;
+@media screen and (max-width: 1024px) {
+  .services-box {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.25rem;
+    row-gap: 1.75rem;
   }
 }
 
-@media screen and (max-width: 550px) {
+@media screen and (max-width: 768px) {
+  .services-box {
+    grid-template-columns: 1fr;
+    row-gap: 1.5rem;
+  }
+
+  .services-card {
+    padding: 1.75rem 1.25rem;
+  }
+
   .services-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+    font-size: 2.4rem;
   }
 
   .services-title {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
   }
 
   .services-desc {
-    font-size: 0.7rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .services-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .services-title {
+    font-size: 1.05rem;
+  }
+
+  .services-desc {
+    font-size: 0.8rem;
+  }
+
+  .services-card {
+    padding: 1.5rem 1rem;
   }
 }
