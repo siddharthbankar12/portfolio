@@ -20,77 +20,96 @@ export const SkillsData = [
   {
     name: "React JS",
     icon: <FaReact />,
-  },
-  {
-    name: "React Native",
-    icon: <FaReact />,
-  },
-  {
-    name: "Next.js",
-    icon: <SiNextdotjs />,
+    priority: 1,
   },
   {
     name: "Node.js",
     icon: <FaNodeJs />,
-  },
-  {
-    name: "Express.js",
-    icon: <SiExpress />,
-  },
-  {
-    name: "Fastify",
-    icon: <SiFastify />,
+    priority: 2,
   },
   {
     name: "MongoDB",
     icon: <SiMongodb />,
+    priority: 3,
   },
   {
-    name: "MySQL",
-    icon: <SiMysql />,
+    name: "Express.js",
+    icon: <SiExpress />,
+    priority: 4,
   },
   {
-    name: "PostgreSQL",
-    icon: <SiPostgresql />,
+    name: "React Native",
+    icon: <FaReact />,
+    priority: 5,
   },
   {
-    name: "Socket.IO",
-    icon: <SiSocketdotio />,
+    name: "Fastify",
+    icon: <SiFastify />,
+    priority: 6,
   },
   {
-    name: "Redux",
-    icon: <SiRedux />,
+    name: "Next.js",
+    icon: <SiNextdotjs />,
+    priority: 7,
   },
   {
     name: "JavaScript",
     icon: <DiJavascript1 />,
+    priority: 8,
   },
   {
     name: "TypeScript",
     icon: <SiTypescript />,
-  },
-  {
-    name: "PHP",
-    icon: <SiPhp />,
-  },
-  {
-    name: "CodeIgniter",
-    icon: <SiCodeigniter />,
-  },
-  {
-    name: "HTML5",
-    icon: <FaHtml5 />,
+    priority: 9,
   },
   {
     name: "Tailwind CSS",
     icon: <SiTailwindcss />,
+    priority: 10,
   },
   {
-    name: "Bootstrap",
-    icon: <SiBootstrap />,
+    name: "MySQL",
+    icon: <SiMysql />,
+    priority: 11,
+  },
+  {
+    name: "PostgreSQL",
+    icon: <SiPostgresql />,
+    priority: 12,
+  },
+  {
+    name: "Socket.IO",
+    icon: <SiSocketdotio />,
+    priority: 13,
+  },
+  {
+    name: "Redux",
+    icon: <SiRedux />,
+    priority: 14,
   },
   {
     name: "GitHub",
     icon: <FaGithub />,
+    priority: 15,
+  },
+  {
+    name: "PHP",
+    icon: <SiPhp />,
+    priority: 16,
+  },
+  {
+    name: "CodeIgniter",
+    icon: <SiCodeigniter />,
+    priority: 17,
+  },
+  {
+    name: "HTML5",
+    icon: <FaHtml5 />,
+    priority: 18,
+  },
+  {
+    name: "Bootstrap",
+    icon: <SiBootstrap />,
+    priority: 19,
   },
 ];

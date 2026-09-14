@@ -22,7 +22,7 @@ function App() {
     if (textRef.current) {
       const textWidth = textRef.current.offsetWidth;
       const padding = 40;
-      const flagWidth = 24; // 20px flag + 4px margin
+      const flagWidth = 28; // 20px flag + 8px margin
       const totalWidth = textWidth + padding + flagWidth;
       const newWidth = Math.max(320, totalWidth);
       setSvgWidth(newWidth);
@@ -88,7 +88,7 @@ function App() {
           className="text"
         >
           <span ref={textRef} className="name-text">
-            Mr. Siddharth Dadaram Bankar
+            Mr. Siddharth Bankar
           </span>
           <span className="flag-wrapper">
             <Flag

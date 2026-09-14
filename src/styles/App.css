@@ -129,15 +129,22 @@ body {
 /* Mobile text positioning */
 @media screen and (max-width: 500px) {
   .text {
-    font-size: 13px;
+    font-size: 12px;
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    white-space: normal;
+    white-space: nowrap;
     text-align: center;
-    letter-spacing: 2px;
-    line-height: 24px;
+    letter-spacing: 0px;
+    line-height: 22px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .text {
+    font-size: 10px;
+    letter-spacing: 0px;
   }
 }
 

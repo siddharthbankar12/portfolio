@@ -165,7 +165,7 @@
 
 @media screen and (max-width: 650px) {
   .hero-intro {
-    font-size: 5rem;
+    font-size: 2rem;
   }
 }
 
@@ -176,7 +176,7 @@
   }
 
   .hero-intro {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 
   .hero-desc,

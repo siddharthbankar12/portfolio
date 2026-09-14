@@ -75,7 +75,7 @@ const Navbar = ({ nav, handleNav }) => {
               to="home"
               className="profile-name"
             >
-              Siddharth Dadaram Bankar
+              Mr. Siddharth Bankar
             </Link>
             <NavLinks handleNav={handleLinkClick} />
           </div>

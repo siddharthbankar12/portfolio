@@ -41,7 +41,7 @@ const About = () => {
               <section>
                 <p>
                   <big>
-                    <strong>Hello! I’m Siddharth Dadaram Bankar</strong>
+                    <strong>Hello! I’m Siddharth Bankar</strong>
                   </big>
                   , a passionate Software Engineer specializing in modern web
                   development, mobile application development, and scalable
