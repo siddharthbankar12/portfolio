@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "../styles/Works.css";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   ExperienceData,
   ProjectsData,
   CertificationsData,
 } from "../data/WorkData";
-import WorkCard from "./WorkCard";
+import ExperienceTimeline from "./ExperienceTimeline";
+import ProjectCard from "./ProjectCard";
+import CertificationList from "./CertificationList";
 
 const Works = () => {
   const [activeTab, setActiveTab] = useState("experience");
@@ -51,22 +53,30 @@ const Works = () => {
           ))}
         </div>
 
-        <motion.div
-          className="works-box"
-          initial={{ opacity: 0 }}
-          whileInView={fade}
-        >
-          {tabData.map(
-            (tab) =>
-              activeTab === tab.id && (
-                <React.Fragment key={tab.id}>
-                  {tab.data.map((w, index) => (
-                    <WorkCard w={w} tabId={tab.id} key={index} />
-                  ))}
-                </React.Fragment>
-              )
-          )}
-        </motion.div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            className="works-box"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3 }}
+          >
+            {activeTab === "experience" && (
+              <ExperienceTimeline data={ExperienceData} />
+            )}
+            {activeTab === "projects" && (
+              <div className="projects-grid">
+                {ProjectsData.map((project, index) => (
+                  <ProjectCard project={project} key={index} />
+                ))}
+              </div>
+            )}
+            {activeTab === "certification" && (
+              <CertificationList data={CertificationsData} />
+            )}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </div>
   );

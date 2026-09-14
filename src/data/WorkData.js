@@ -1,30 +1,23 @@
 export const ExperienceData = [
   {
-    role: "Software Engineer Trainee",
+    role: "Software Engineer",
     company: "Mindstack Software Pvt. Ltd.",
-    desc: "Working on web, application and backend development as part of the engineering team. Contributing to real-world projects, implementing new features, improving system performance, and learning industry-level software development practices.",
-    tech: [
-      "React.js",
-      "React Native",
-      "Node.js",
-      "Express.js",
-      "MongoDB",
-      "MySQL",
-    ],
+    desc: "Develop and maintain full-stack web, mobile, and backend applications using React.js, React Native, Node.js, Express.js, MongoDB, and MySQL. Build RESTful APIs, optimize database queries, and collaborate with senior engineers to deliver scalable and reliable production features.",
+    tech: ["React.js", "React Native", "Node.js", "Fastify", "MongoDB"],
     period: "August 2025 - Present",
   },
   {
     role: "Software Development Intern",
     company: "Mindstack Software Pvt. Ltd.",
-    desc: "Designed, developed, and tested software applications. Actively participated in code reviews to ensure code quality and maintainability. Contributed to the development of new features and functionality enhancements. Collaborated with the team to deliver high-quality, scalable solutions.",
-    tech: ["HTML", "CSS", "JavaScript", "React.js"],
+    desc: "Developed and tested features across the MERN stack while following clean coding practices and participating in peer code reviews. Improved existing application functionality by fixing bugs and implementing new features.",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
     period: "June 2025 - July 2025",
   },
   {
     role: "Junior Web Developer Intern",
     company: "Basil Infotech Limited",
-    desc: "Worked under the guidance of senior developers to support the development of web applications. Gained hands-on experience in writing clean and maintainable code, fixing bugs, and building responsive user interfaces.",
-    tech: ["React JS", "Node.js", "Express.js", "MongoDB"],
+    desc: "Developed responsive web applications using React.js, Node.js, Express.js, and MongoDB under senior developer guidance. Built reusable UI components, resolved bugs, and gained hands-on experience in API development and database integration.",
+    tech: ["React.js", "Node.js", "Express.js", "MongoDB"],
     period: "April 2025 - June 2025",
   },
 ];
