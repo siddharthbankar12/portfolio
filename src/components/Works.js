@@ -22,7 +22,7 @@ const Works = () => {
 
   const tabData = [
     { id: "experience", label: "Experience", data: ExperienceData },
-    { id: "projects", label: "Projects", data: ProjectsData },
+    // { id: "projects", label: "Projects", data: ProjectsData },
     { id: "certification", label: "Certifications", data: CertificationsData },
   ];
 

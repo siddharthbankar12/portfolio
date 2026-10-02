@@ -1,5 +1,7 @@
 .works-box {
   width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 /* Timeline Styles */
@@ -370,7 +372,6 @@
 
   .works-box {
     box-sizing: border-box;
-    overflow-x: hidden;
   }
 
   .timeline-wrapper {
