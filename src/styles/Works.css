@@ -316,6 +316,7 @@
   width: fit-content;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
 }
 
 .tab {
@@ -331,6 +332,8 @@
   outline: none;
   position: relative;
   white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 
 .tab:hover {
@@ -356,6 +359,7 @@
     -ms-overflow-style: none;
     width: 100%;
     max-width: 100%;
+    overflow: hidden;
   }
 
   .tabs::-webkit-scrollbar {
@@ -368,6 +372,8 @@
     padding: 0.55rem 1rem;
     white-space: nowrap;
     flex-shrink: 0;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   .works-box {
@@ -407,6 +413,8 @@
   .tab {
     font-size: 0.8rem;
     padding: 0.5rem 0.85rem;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 }
 
