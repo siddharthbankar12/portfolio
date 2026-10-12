@@ -120,6 +120,11 @@
   transition: all 0.4s ease;
   z-index: 99999999;
   background-color: var(--nav-blue);
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .menu-icon {
@@ -130,6 +135,12 @@
 
 .menu-icon:hover {
   background-color: var(--nav-blue-shade);
+}
+
+.menu-icon:focus-visible,
+.to-top-icon:focus-visible {
+  outline: 2px solid var(--nav-blue);
+  outline-offset: 2px;
 }
 
 .cv-icon {
